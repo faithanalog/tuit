@@ -12,8 +12,8 @@ license = "GPL-3.0+"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-thiserror = { version = "^1.0", package = "thiserror-core" }
-anyhow = "^1.0"
+thiserror = { version = "^1.0", package = "thiserror-core", default-features = false }
+anyhow = { version = "^1.0", default-features = false }
 owo-colors = { version = "^4.0", optional = true }
 log = { version = "^0.4", optional = true }
 env_logger = { version = "0.11.5", optional = true }
@@ -25,7 +25,7 @@ tuit = { path = ".", features = ["ansi_renderer", "extras", "std", "debug"] }
 
 [features]
 default = ["builtin_widgets"]
-std = ["alloc"]
+std = ["alloc", "anyhow/std", "thiserror/std" ]
 alloc = []
 builtin_widgets = []
 ansi_renderer = ["owo_colors"]
