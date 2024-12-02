@@ -484,6 +484,7 @@ impl Rectangle {
     /// With large rectangle sizes, there is a risk of some precision loss because the function converts
     /// the `usize` integers used to store lengths into `f32` floats.
     #[must_use]
+    #[cfg(feature = "std")]
     pub fn edge_to_edge(&self) -> f32 {
         #[allow(clippy::cast_precision_loss)]
         ((self.width().pow(2) + self.height().pow(2)) as f32).sqrt()
